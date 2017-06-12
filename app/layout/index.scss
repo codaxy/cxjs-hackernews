@@ -11,10 +11,46 @@ header {
    top: 0;
    left: 0;
    right: 0;
-   background: #3793ff;
+   background: #ff6600;
+   padding: 10px;
+   color: white;
+
+   h1 {
+      margin: 0 10px 0 0;
+      line-height: 0;
+
+      .cxb-link {
+         font-size: 24px;
+         line-height: 24px;
+         color: white;
+         &:hover {
+            text-decoration: none;
+         }
+      }
+   }
+
+   .cxb-link {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      margin: 0 5px;
+
+      &.cxs-active {
+         color: white;
+         font-weight: 500;
+      }
+   }
+
+   .content {
+      display: flex;
+      align-items: center;
+   }
 }
 
 .center {
    max-width: 1000px;
    margin: auto;
+
+   @media screen and (max-width: 1000px) {
+      margin: 4px;
+   }
 }

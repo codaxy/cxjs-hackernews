@@ -36,14 +36,13 @@
     color: gray;
   }
 
-  .comments {
+  .comments-no {
     position: absolute;
     right: 0;
-    top: 0;
-    bottom: 0;
+    top: 50%;
+    margin-top: -24px;
     width: 100px;
     text-align: center;
-    margin-top: 20px;
 
     span {
       font-size: 20px;
@@ -77,4 +76,35 @@
     opacity: 1;
     transform: none;
   }
+}
+
+@keyframes appear-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.loading {
+  padding: 20px;
+}
+
+.comments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.comment {
+  background: white;
+  padding: 20px 100px 20px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+  transition: all 0.4s;
+  position: relative;
 }
