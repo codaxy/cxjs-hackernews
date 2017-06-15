@@ -39,3 +39,8 @@ Debug.enable('app-data');
 import Routes from './routes';
 
 let stop = startAppLoop(document.getElementById('app'), store, Routes);
+
+// service worker
+if (location.protocol == 'https:' && navigator.serviceWorker) {
+   navigator.serviceWorker.register('/service-worker.js')
+}
