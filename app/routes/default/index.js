@@ -2,7 +2,6 @@ import {HtmlElement, Link, Button, Repeater, Text, Icon, PureContainer} from 'cx
 import {Format} from 'cx/util';
 
 Format.register('age', v => {
-    console.log(v);
     let value = Date.now()/1000 - v;
     if (value > 1.5 * 86400)
         return `${Math.round(value/86400).toFixed(0)} days ago`;
@@ -29,7 +28,7 @@ import Controller from './Controller';
 
 export default <cx>
     <PureContainer controller={Controller}>
-        <div class="loading article" visible:expr="{status}=='loading'">
+        <div class="loading" visible:expr="{status}=='loading'">
             <Icon name="loading"/> Loading...
         </div>
         <div visible:expr="{status}=='ok'">
