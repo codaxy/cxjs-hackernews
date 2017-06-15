@@ -1,6 +1,9 @@
 $cx-include-global-rules: true;
 
 @import "~cx/src/variables";
+
+@import "manifest";
+
 @import "~cx/src/index";
 
 @import "components/index";

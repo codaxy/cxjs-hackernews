@@ -1,0 +1,38 @@
+//THIS FILE IS AUTO-GENERATED USING cx-scss-manifest-webpack-plugin
+
+$cx-include-all: false;
+
+@include cx-widgets(
+	"cx/data/Store",
+	"cx/ui/Url",
+	"cx/ui/History",
+	"cx/ui/Widget",
+	"cx/ui/getContentArray",
+	"cx/ui/VDOM",
+	"cx/ui/contentAppend",
+	"cx/ui/getContent",
+	"cx/ui/startAppLoop",
+	"cx/util/Timing",
+	"cx/util/appLoopFlag",
+	"cx/util/vdomRenderFlag",
+	"cx/util/Debug",
+	"cx/util/appDataFlag",
+	"cx/util/tooltipsFlag",
+	"cx/util/processDataFlag",
+	"cx/util/prepareFlag",
+	"cx/util/shouldUpdateFlag",
+	"cx/util/renderFlag",
+	"cx/util/cleanupFlag",
+	"cx/util/destroyFlag",
+	"cx/ui/Controller",
+	"cx/widgets/HtmlElement",
+	"cx/widgets/Link",
+	"cx/widgets/Button",
+	"cx/ui/ContentPlaceholder",
+	"cx/ui/contentSandbox",
+	"cx/ui/Repeater",
+	"cx/ui/Text",
+	"cx/widgets/Icon",
+	"cx/ui/PureContainer",
+	"cx/util/Format"
+);

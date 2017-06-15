@@ -1,5 +1,6 @@
 const webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
+    CxScssManifestPlugin = require('cx-scss-manifest-webpack-plugin'),
     merge = require('webpack-merge'),
     path = require('path'),
     babelCfg = require("./babel.config"),
@@ -10,7 +11,7 @@ module.exports = {
         alias: {
             app: p("app"),
             //uncomment the line below to alias cx-react to cx-preact or some other React replacement library
-            //'cx-react': 'cx-preact',
+            'cx-react': 'cx-preact',
         }
     },
 
@@ -27,7 +28,7 @@ module.exports = {
         }]
     },
     entry: {
-        vendor: ['cx-react', p('app/polyfill.js')],
+        //vendor: ['cx-react', p('app/polyfill.js')],
         app: [
            p('app/index.js')
         ]
@@ -37,12 +38,14 @@ module.exports = {
         filename: "[name].js"
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            name: "vendor"
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: "vendor"
+        // }),
         new HtmlWebpackPlugin({
-            template: p('app/index.html'),
-            hash: true
+            template: p('app/index.html')
+        }),
+        new CxScssManifestPlugin({
+            outputPath: path.join(__dirname, '../app/manifest.scss')
         })
     ]
 };

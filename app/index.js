@@ -7,6 +7,10 @@ import "./index.scss";
 //store
 const store = new Store();
 
+
+//TODO: Investigate
+Widget.prototype.memoize = false;
+
 //webpack (HMR)
 if (module.hot) {
    // accept itself

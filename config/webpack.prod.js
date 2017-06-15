@@ -2,6 +2,7 @@ var webpack = require('webpack'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin'),
+    BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
     merge = require('webpack-merge'),
     common = require('./webpack.config'),
     path = require('path')
@@ -32,7 +33,8 @@ var specific = {
             from: path.join(__dirname, '../assets'),
             to: path.join(__dirname, '../dist/assets'),
         }]),
-        new SWPrecacheWebpackPlugin()
+        new SWPrecacheWebpackPlugin(),
+        //new BundleAnalyzerPlugin()
     ],
 
     output: {
