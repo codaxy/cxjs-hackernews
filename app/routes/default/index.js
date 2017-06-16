@@ -1,5 +1,6 @@
-import {HtmlElement, Link, Button, Repeater, Text, Icon, PureContainer} from 'cx/widgets';
+import {HtmlElement, Link, Repeater, Text, Icon, PureContainer} from 'cx/widgets';
 import {Format} from 'cx/util';
+import {ScrollDetector} from "../../components/ScrollDetector";
 
 Format.register('age', v => {
     let value = Date.now()/1000 - v;
@@ -37,7 +38,7 @@ export default <cx>
                     "articles": true,
                 }}
             >
-                <Repeater records:bind="stories" cached>
+                <Repeater records:bind="stories" cached idField="id">
                     <li class="article">
                         <h3>
                             <a text:bind="$record.title" href:bind="$record.url" target="_blank" rel="noopener"/>
@@ -75,5 +76,6 @@ export default <cx>
                 </Repeater>
             </ul>
         </div>
+        <ScrollDetector onDetect="x"/>
     </PureContainer>
 </cx>

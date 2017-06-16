@@ -1,5 +1,4 @@
 import {Controller} from 'cx/ui';
-import {fetchStories, fetchItem} from '../../api';
 
 export default class extends Controller {
     onInit() {
@@ -60,34 +59,41 @@ export default class extends Controller {
             return;
 
         this.store.set('status', 'loading');
-        fetchStories(channel)
-            .then(data => {
-                data.forEach(item => {
-                    fetchItem(item.id)
-                        .then(fullItem => {
-                            this.store.update('stories', stories => stories.map(x => x.id === item.id ? fullItem : x));
-                            this.store.set('status', 'ok');
+
+        System.import('../../api/index.js')
+            .then(({fetchStories, fetchItem}) => {
+                fetchStories(channel)
+                    .then(data => {
+                        data.forEach(item => {
+                            fetchItem(item.id)
+                                .then(fullItem => {
+                                    this.store.update('stories', stories => stories.map(x => x.id === item.id ? fullItem : x));
+                                    this.store.set('status', 'ok');
+                                });
                         });
-                });
-                this.store.set('stories', data);
+                        this.store.set('stories', data);
+                    });
             });
     }
 
     loadItem(id) {
         this.store.set('activeChannel', "item");
         this.store.delete('comments');
-        fetchItem(id)
-            .then(item => {
-                this.store.set('stories', [item]);
-                this.scrollToTop();
-                this.store.set('comments', item.kids.map(kid => ({id: kid})));
-                item.kids.forEach(kid => {
-                    fetchItem(kid)
-                        .then(item => {
-                            this.store.update('comments', stories => stories.map(x => x.id === item.id ? item : x));
-                            this.store.set('status', 'ok');
-                        });
-                })
+        System.import('../../api/index.js')
+            .then(({fetchStories, fetchItem}) => {
+                fetchItem(id)
+                    .then(item => {
+                        this.store.set('stories', [item]);
+                        this.scrollToTop();
+                        this.store.set('comments', item.kids.map(kid => ({id: kid})));
+                        item.kids.forEach(kid => {
+                            fetchItem(kid)
+                                .then(item => {
+                                    this.store.update('comments', stories => stories.map(x => x.id === item.id ? item : x));
+                                    this.store.set('status', 'ok');
+                                });
+                        })
+                    });
             });
     }
 }
