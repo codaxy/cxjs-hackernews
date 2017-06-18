@@ -17,18 +17,19 @@ header {
    left: 0;
    right: 0;
    background: #ff6600;
-   padding: 10px;
+   padding: 5px;
    color: white;
    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
    h1 {
       margin: 0 5px 0 0;
-      line-height: 0;
+      display: block;
 
       .cxb-link {
          font-size: 24px;
-         line-height: 24px;
+         line-height: 32px;
          color: white;
+         padding: 0;
 
          &:hover {
             text-decoration: none;
@@ -39,12 +40,18 @@ header {
    .cxb-link {
       color: rgba(255, 255, 255, 0.8);
       font-size: 16px;
-      margin: 0 5px;
+      line-height: 22px;
+      //margin: 0 5px;
+      padding: 5px;
+
+      &:hover {
+         text-decoration: none;
+         color: rgba(255, 255, 255, 0.9);
+      }
 
       &.cxs-active {
          color: white;
          font-weight: 500;
-         text-decoration: none;
       }
    }
 
@@ -58,11 +65,11 @@ header {
       display: block;
       margin-left: auto;
       margin-right: 5px;
-      line-height: 24px;
+      line-height: 32px;
 
       .cxb-icon {
-         width: 24px;
-         height: 24px;
+         width: 32px;
+         height: 32px;
       }
    }
 }

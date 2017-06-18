@@ -24,16 +24,20 @@ var specific = {
     },
 
     plugins: [
-        new webpack.optimize.UglifyJsPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
+        new SWPrecacheWebpackPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
         sass,
         new CopyWebpackPlugin([{
             from: path.join(__dirname, '../assets'),
             to: path.join(__dirname, '../dist/assets'),
+        }, {
+            from: path.resolve(__dirname, './redirects.netlify'),
+            to: '_redirects',
+            toType: 'file'
         }]),
-        new SWPrecacheWebpackPlugin(),
         //new BundleAnalyzerPlugin()
     ],
 
