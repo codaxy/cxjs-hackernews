@@ -7,8 +7,8 @@ $cx-include-all: false;
 	"cx/ui/Url",
 	"cx/ui/History",
 	"cx/ui/Widget",
-	"cx/ui/getContentArray",
 	"cx/ui/VDOM",
+	"cx/ui/getContentArray",
 	"cx/ui/contentAppend",
 	"cx/ui/getContent",
 	"cx/ui/startAppLoop",
@@ -28,12 +28,11 @@ $cx-include-all: false;
 	"cx/ui/Controller",
 	"cx/widgets/HtmlElement",
 	"cx/widgets/Link",
-	"cx/widgets/Button",
+	"cx/widgets/Icon",
 	"cx/ui/ContentPlaceholder",
 	"cx/ui/contentSandbox",
 	"cx/ui/Repeater",
 	"cx/ui/Text",
-	"cx/widgets/Icon",
 	"cx/ui/PureContainer",
 	"cx/util/Format"
 );
