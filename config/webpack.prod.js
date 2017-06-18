@@ -1,6 +1,6 @@
 var webpack = require('webpack'),
     ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    //CopyWebpackPlugin = require('copy-webpack-plugin'),
+    CopyWebpackPlugin = require('copy-webpack-plugin'),
     SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin'),
     BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
     merge = require('webpack-merge'),
@@ -29,6 +29,10 @@ var specific = {
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
         sass,
+        new CopyWebpackPlugin([{
+            from: path.join(__dirname, '../assets'),
+            to: path.join(__dirname, '../dist/assets'),
+        }]),
         new SWPrecacheWebpackPlugin(),
         //new BundleAnalyzerPlugin()
     ],
