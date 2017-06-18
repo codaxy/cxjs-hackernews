@@ -3,9 +3,15 @@ import {findScrollableParent} from "cx/util";
 
 export class ScrollDetector extends Widget {
     render(context, instance, key) {
-        return <ScrollComponent key={key} />
+        return <ScrollComponent
+            key={key}
+            triggerZoneHeight={this.triggerZoneHeight}
+            onDetect={() => instance.invoke('onDetect', instance)}
+        />
     }
 }
+
+ScrollDetector.prototype.triggerZoneHeight = 1500;
 
 class ScrollComponent extends VDOM.Component {
     render() {
@@ -18,15 +24,15 @@ class ScrollComponent extends VDOM.Component {
         const scrollableParent = findScrollableParent(this.el);
 
         this.onScroll = () => {
-            console.log('scroll');
-            if (scrollableParent.scrollTop > scrollableParent.scrollHeight - 3 * scrollableParent.offsetHeight / 2) {
-                console.log(scrollableParent.scrollTop, scrollableParent.scrollHeight, scrollableParent.offsetHeight)
-            }
+            if (scrollableParent.scrollTop + scrollableParent.offsetHeight + this.props.triggerZoneHeight > scrollableParent.scrollHeight)
+                this.props.onDetect();
         };
 
         window.addEventListener("scroll", this.onScroll, {passive: true});
 
-        this.offScroll = () => { window.removeEventListener("scroll", this.offScroll); }
+        this.offScroll = () => {
+            window.removeEventListener("scroll", this.offScroll);
+        }
     }
 
     componentWillUnmount() {

@@ -1,9 +1,11 @@
 import {Controller} from 'cx/ui';
+import {watchStories, fetchItem} from '../../api';
 
 export default class extends Controller {
     onInit() {
 
         this.store.init('activeChannel', 'top');
+        this.store.init('stories', []);
 
         this.addTrigger('nav', ['url'], url => {
             switch (url) {
@@ -39,6 +41,38 @@ export default class extends Controller {
         }, true);
 
         this.addTrigger('channelChange', ['activeChannel'], ::this.loadChannel, true)
+
+        this.addTrigger('visibleStories', ['stories', 'page'], (stories, page) => {
+            let visible = [];
+            let count = Math.min(stories.length, page * 30);
+            let unloaded = 0;
+            for (let i = 0; i < count; i++) {
+                let item = stories[i];
+                visible.push(item);
+                if (!item.by) {
+                    unloaded++;
+                    fetchItem(item.id)
+                        .then(fullItem => {
+                            this.store.update('visibleStories', stories => stories.map(x => x.id === item.id ? fullItem : x));
+                            this.store.set('status', 'ok');
+                        });
+                }
+            }
+            this.store.set('visibleStories', visible);
+            if (unloaded == 0)
+                this.store.set('status', 'ok');
+        });
+    }
+
+    onDestroy() {
+        this.unwatch();
+    }
+
+    unwatch() {
+        if (this.unwatchStories) {
+            this.unwatchStories();
+            this.unwatchStories = null;
+        }
     }
 
     scrollToTop() {
@@ -58,42 +92,42 @@ export default class extends Controller {
         if (channel == "item")
             return;
 
-        this.store.set('status', 'loading');
+        this.unwatch();
 
-        System.import('../../api/index.js')
-            .then(({fetchStories, fetchItem}) => {
-                fetchStories(channel)
-                    .then(data => {
-                        data.forEach(item => {
-                            fetchItem(item.id)
-                                .then(fullItem => {
-                                    this.store.update('stories', stories => stories.map(x => x.id === item.id ? fullItem : x));
-                                    this.store.set('status', 'ok');
-                                });
-                        });
-                        this.store.set('stories', data);
-                    });
-            });
+        this.store.set('status', 'loading');
+        this.store.set('page', 1);
+
+        watchStories(channel, data => {
+            this.store.set('stories', data);
+        }).then(cb => this.unwatchStories = cb);
     }
 
     loadItem(id) {
         this.store.set('activeChannel', "item");
         this.store.delete('comments');
-        System.import('../../api/index.js')
-            .then(({fetchStories, fetchItem}) => {
-                fetchItem(id)
-                    .then(item => {
-                        this.store.set('stories', [item]);
-                        this.scrollToTop();
-                        this.store.set('comments', item.kids.map(kid => ({id: kid})));
-                        item.kids.forEach(kid => {
-                            fetchItem(kid)
-                                .then(item => {
-                                    this.store.update('comments', stories => stories.map(x => x.id === item.id ? item : x));
-                                    this.store.set('status', 'ok');
-                                });
-                        })
-                    });
-            });
+        api(({fetchItem}) => {
+            fetchItem(id)
+                .then(item => {
+                    this.store.set('stories', [item]);
+                    this.scrollToTop();
+                    this.store.set('comments', item.kids.map(kid => ({id: kid})));
+                    item.kids.forEach(kid => {
+                        fetchItem(kid)
+                            .then(item => {
+                                this.store.update('comments', stories => stories.map(x => x.id === item.id ? item : x));
+                                this.store.set('status', 'ok');
+                            });
+                    })
+                });
+        });
+    }
+
+    loadMore() {
+        let status = this.store.get('status');
+        if (status != 'ok')
+            return;
+        let stories = this.store.get('stories');
+        this.store.update('page', page => Math.min(Math.ceil(stories.length / 30), page + 1));
+        this.store.set('status', 'loading-more');
     }
 }

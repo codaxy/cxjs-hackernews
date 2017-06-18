@@ -59,11 +59,11 @@
     }
   }
 
-  @for $i from 1 through 30 {
-    &:nth-child(#{$i}) {
-      animation-delay: $i * 0.05s;
-    }
-  }
+  //@for $i from 1 through 30 {
+  //  &:nth-child(#{$i}) {
+  //    animation-delay: $i * 0.05s;
+  //  }
+  //}
 }
 
 @keyframes appear {

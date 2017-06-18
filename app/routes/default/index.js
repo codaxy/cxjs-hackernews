@@ -32,14 +32,19 @@ export default <cx>
         <div class="loading" visible:expr="{status}=='loading'">
             <Icon name="loading"/> Loading...
         </div>
-        <div visible:expr="{status}=='ok'">
+        <div visible:expr="{status}!='loading'">
             <ul
                 class={{
                     "articles": true,
                 }}
             >
-                <Repeater records:bind="stories" cached idField="id">
-                    <li class="article">
+                <Repeater records:bind="visibleStories" cached idField="id">
+                    <li
+                        class="article"
+                        style={{
+                            animationDelay: {tpl:"{[{$index} % 30 * 50]}ms"}
+                        }}
+                    >
                         <h3>
                             <a text:bind="$record.title" href:bind="$record.url" target="_blank" rel="noopener"/>
                         </h3>
@@ -76,6 +81,6 @@ export default <cx>
                 </Repeater>
             </ul>
         </div>
-        <ScrollDetector onDetect="x"/>
+        <ScrollDetector onDetect="loadMore"/>
     </PureContainer>
 </cx>
