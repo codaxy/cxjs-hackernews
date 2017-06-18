@@ -22,7 +22,7 @@ header {
    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 
    h1 {
-      margin: 0 10px 0 0;
+      margin: 0 5px 0 0;
       line-height: 0;
 
       .cxb-link {
@@ -49,6 +49,19 @@ header {
    .content {
       display: flex;
       align-items: center;
+   }
+
+   .cx-logo {
+      color: white;
+      display: block;
+      margin-left: auto;
+      margin-right: 5px;
+      line-height: 24px;
+
+      .cxb-icon {
+         width: 24px;
+         height: 24px;
+      }
    }
 }
 

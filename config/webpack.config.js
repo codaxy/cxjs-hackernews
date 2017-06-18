@@ -1,6 +1,7 @@
 const webpack = require('webpack'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     CxScssManifestPlugin = require('cx-scss-manifest-webpack-plugin'),
+    ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
     merge = require('webpack-merge'),
     path = require('path'),
     babelCfg = require("./babel.config"),
@@ -46,7 +47,14 @@ module.exports = {
         }),
         new CxScssManifestPlugin({
             outputPath: path.join(__dirname, '../app/manifest.scss')
-        })
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            async: /\.js$/,
+            prefetch: {
+                test: /\.js$/,
+                chunks: 'async'
+            }
+        }),
     ]
 };
 
