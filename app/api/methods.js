@@ -35,7 +35,7 @@ export function fetchStories(channel = 'top', page = 1, pageSize = 30) {
 }
 
 export function watchStories(channel = 'top', callback) {
-    let subscribedCallback = snapshot => callback(snapshot.val().map(id => itemCache[id] || {id, title: 'Loading'}));
+    let subscribedCallback = snapshot => callback(snapshot.val());
     let ref = api.child(channel + 'stories');
 
     ref.on('value', subscribedCallback);
