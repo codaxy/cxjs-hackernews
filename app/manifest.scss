@@ -3,14 +3,17 @@
 $cx-include-all: false;
 
 @include cx-widgets(
+	"cx/ui/Widget",
+	"cx/ui/getContentArray",
+	"cx/ui/VDOM",
+	"cx/ui/getContent",
+	"cx/ui/contentAppend",
+	"cx/util/findScrollableParent",
+	"cx/util/throttle",
+	"cx/util/browserSupportsPassiveEventHandlers",
 	"cx/data/Store",
 	"cx/ui/Url",
 	"cx/ui/History",
-	"cx/ui/Widget",
-	"cx/ui/VDOM",
-	"cx/ui/getContentArray",
-	"cx/ui/contentAppend",
-	"cx/ui/getContent",
 	"cx/ui/startAppLoop",
 	"cx/util/Timing",
 	"cx/util/appLoopFlag",
@@ -24,7 +27,6 @@ $cx-include-all: false;
 	"cx/util/renderFlag",
 	"cx/util/cleanupFlag",
 	"cx/util/destroyFlag",
-	"cx/util/findScrollableParent",
 	"cx/ui/Controller",
 	"cx/widgets/HtmlElement",
 	"cx/widgets/Link",
@@ -34,5 +36,8 @@ $cx-include-all: false;
 	"cx/ui/Repeater",
 	"cx/ui/Text",
 	"cx/ui/PureContainer",
-	"cx/util/Format"
+	"cx/util/Format",
+	"cx/widgets/Sandbox",
+	"cx/ui/Rescope",
+	"cx/ui/TreeAdapter"
 );

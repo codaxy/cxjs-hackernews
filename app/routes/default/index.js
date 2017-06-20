@@ -1,6 +1,6 @@
 import {HtmlElement, Link, Repeater, Text, Icon, PureContainer} from 'cx/widgets';
 import {Format} from 'cx/util';
-import {ScrollDetector} from "../../components/ScrollDetector";
+import {InfiniteScrollAnchor} from "../../components/InfiniteScrollAnchor";
 
 Format.register('age', v => {
     let value = Date.now()/1000 - v;
@@ -42,7 +42,7 @@ export default <cx>
                     <li
                         class="article"
                         style={{
-                            animationDelay: {tpl:"{[{$index} % 30 * 50]}ms"}
+                            animationDelay: {tpl:"{[({$index} < 30 && {$index} || 0) * 50]}ms"}
                         }}
                     >
                         <h3>
@@ -62,25 +62,6 @@ export default <cx>
                 </Repeater>
             </ul>
         </div>
-        <div visible:expr="{activeChannel}=='item'">
-            <ul
-                class={{
-                    "comments": true,
-                }}
-            >
-                <Repeater records:bind="comments" cached>
-                    <li class="comment" visible:expr="!!{$record.text}">
-                        <p>
-                            <i text:bind="$record.by"/> <span text:tpl="{$record.time:age}" />
-                        </p>
-                        <p html:bind="$record.text"/>
-                        <p visible:expr="{$record.kids.length} > 0">
-                            <a href="#" text:tpl="{$record.kids.length} replies" />
-                        </p>
-                    </li>
-                </Repeater>
-            </ul>
-        </div>
-        <ScrollDetector onDetect="loadMore"/>
+        <InfiniteScrollAnchor onMeasure="loadMore"/>
     </PureContainer>
 </cx>
