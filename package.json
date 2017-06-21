@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
-    "cx": "^17.6.3",
+    "cx": "^17.6.5",
     "cx-preact": "^17.5.0",
     "cx-react": "^17.4.1",
     "firebase": "^4.1.2",
