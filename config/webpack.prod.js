@@ -38,7 +38,7 @@ var specific = {
             to: '_redirects',
             toType: 'file'
         }]),
-        new BundleAnalyzerPlugin()
+        //new BundleAnalyzerPlugin()
     ],
 
     output: {
