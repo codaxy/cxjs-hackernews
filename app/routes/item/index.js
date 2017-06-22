@@ -1,30 +1,6 @@
 import {HtmlElement, Link, Repeater, Text, Icon, PureContainer} from 'cx/widgets';
 import {Format} from 'cx/util';
 import {TreeAdapter} from 'cx/ui';
-import {InfiniteScrollAnchor} from "../../components/InfiniteScrollAnchor";
-
-Format.register('age', v => {
-    let value = Date.now() / 1000 - v;
-    if (value > 1.5 * 86400)
-        return `${Math.round(value / 86400).toFixed(0)} days ago`;
-
-    if (value > 86400)
-        return `a day ago`;
-
-    if (value > 5400)
-        return `${Math.round(value / 3600).toFixed(0)} hours ago`;
-
-    if (value > 3600)
-        return `an hour ago`;
-
-    if (value > 90)
-        return `${Math.round(value / 60).toFixed(0)} minutes ago`;
-
-    if (value > 60)
-        return `a minute ago`;
-
-    return `${value.toFixed(0)} seconds ago`;
-});
 
 import Controller from './Controller';
 

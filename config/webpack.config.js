@@ -9,10 +9,14 @@ const webpack = require('webpack'),
 
 module.exports = {
     resolve: {
+        //uncomment if linked npm deps are used
+        // symlinks: false,
+        // modules: [p('node_modules')],
+
         alias: {
             app: p("app"),
             //uncomment the line below to alias cx-react to cx-preact or some other React replacement library
-            'cx-react': 'cx-preact',
+            'cx-react': 'cx-preact'
         }
     },
 
@@ -20,7 +24,7 @@ module.exports = {
         loaders: [{
             test: /\.js$/,
             //add here any ES6 based library
-            include: /(app|cx)[\\\/]/,
+            include: /(app|cx|cx-preact|cx-react)[\\\/]/,
             loader: 'babel-loader',
             query: babelCfg
         }, {
@@ -45,9 +49,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: p('app/index.html')
         }),
-        new CxScssManifestPlugin({
-            outputPath: path.join(__dirname, '../app/manifest.scss')
-        }),
+        // new CxScssManifestPlugin({
+        //     outputPath: path.join(__dirname, '../app/manifest.scss')
+        // }),
         new ScriptExtHtmlWebpackPlugin({
             async: /\.js$/,
             prefetch: {

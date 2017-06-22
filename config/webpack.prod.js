@@ -28,6 +28,7 @@ var specific = {
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
         new SWPrecacheWebpackPlugin(),
+        new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
         sass,
         new CopyWebpackPlugin([{
