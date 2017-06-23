@@ -1448,9 +1448,9 @@ cx-scss-manifest-webpack-plugin@^17.6.0:
   version "17.6.0"
   resolved "https://registry.yarnpkg.com/cx-scss-manifest-webpack-plugin/-/cx-scss-manifest-webpack-plugin-17.6.0.tgz#b06368b2d934acd1f3cde151a924ea113b905b6b"
 
-cx@^17.6.6:
-  version "17.6.6"
-  resolved "https://registry.yarnpkg.com/cx/-/cx-17.6.6.tgz#f4efe8c76d6b35df78281ce4d6c85a95df3f51ad"
+cx@beta:
+  version "17.7.0"
+  resolved "https://registry.yarnpkg.com/cx/-/cx-17.7.0.tgz#b6577c3b05c3a979da26ed15fe05a1d45c90e7bc"
   dependencies:
     intl-io "^0.2.5"
     route-parser "^0.0.5"
