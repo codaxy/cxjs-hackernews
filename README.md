@@ -10,7 +10,7 @@ due to incremental code loading.
 
 ## Hosting
 
-The app available at https://hn.cxjs.io. 
+Live at https://hn.cxjs.io. 
 
 Hosting is provided by [Netlify](https://www.netlify.com/), which also provides a free https certificate.
 
@@ -27,12 +27,12 @@ Node.js 6+ is required.
 ## App Features
 
 * Top stories in multiple categories
-* Infinite scrolling of stories beyond the top 30
+* Infinite scrolling of stories beyond top 30
 * Comments with an option to expand replies
 
 ## Stack
 
-* preact-compat - small size React replacement
+* preact-compat - small-size React replacement
 * firebase - HN API access and real-time updates
 * CxJS:
     * app layout
