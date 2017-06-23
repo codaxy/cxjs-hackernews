@@ -9,7 +9,7 @@ const store = new Store();
 
 
 //TODO: Investigate
-Widget.prototype.memoize = false;
+//Widget.prototype.memoize = false;
 
 //webpack (HMR)
 if (module.hot) {

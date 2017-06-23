@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.1 r15371"
-   sodipodi:docname="logo.svg">
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="S:\Code\Lab\cxjs-hn\assets\logo1024.png"
+   inkscape:export-xdpi="1536"
+   inkscape:export-ydpi="1536">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +28,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8"
-     inkscape:cx="109.56763"
-     inkscape:cy="-34.090401"
+     inkscape:zoom="5.6"
+     inkscape:cx="16.411351"
+     inkscape:cy="2.6776646"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -50,7 +53,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -66,166 +69,166 @@
        height="16.933332"
        x="0"
        y="280.06665"
-       ry="0.28348213" />
+       ry="1.0866772" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:8.38707447px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.5291667;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       x="2.183346"
-       y="289.77371"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:10.05829239px;line-height:125%;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Semi-Bold';letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.5291667;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       x="1.2509745"
+       y="280.82831"
        id="text4489"
-       transform="scale(0.99359027,1.0064511)"><tspan
+       transform="scale(0.96109156,1.0404836)"><tspan
          sodipodi:role="line"
          id="tspan4487"
-         x="2.183346"
-         y="289.77371"
-         style="fill:#ffffff;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none">HN</tspan></text>
+         x="1.2509745"
+         y="280.82831"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI Semi-Bold';fill:#ffffff;stroke-width:0.5291667;stroke-miterlimit:4;stroke-dasharray:none">HN</tspan></text>
     <g
-       style="fill:#ffffff;stroke-width:8.35198498"
-       transform="matrix(0.0316791,0,0,0.0316791,23.433507,287.01435)"
+       style="fill:#ffffff;stroke-width:8.47151852"
+       transform="matrix(0.0312321,0,0,0.0312321,23.100764,287.07841)"
        id="g4544">
       <polygon
          id="XMLID_324_"
          class="st0"
          points="-300.1,297 -308,283.3 -292.2,283.3 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_323_"
          class="st1"
          points="-265,297 -272.9,283.3 -257.1,283.3 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_322_"
          class="st0"
          points="-300.9,297.5 -316.7,297.5 -308.8,283.8 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_321_"
          class="st1"
          points="-248.3,297.5 -264.1,297.5 -256.2,283.8 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_320_"
          class="st0"
          points="-291.3,281.8 -299.2,268.1 -283.4,268.1 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_319_"
          class="st1"
          points="-238.7,281.8 -246.6,268.1 -230.8,268.1 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_318_"
          class="st0"
          points="-273.7,281.8 -281.7,268.1 -265.8,268.1 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_317_"
          class="st0"
          points="-292.2,282.3 -308,282.3 -300.1,268.6 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_316_"
          class="st0"
          points="-274.6,282.3 -290.4,282.3 -282.5,268.6 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_315_"
          class="st1"
          points="-257.1,282.3 -272.9,282.3 -265,268.6 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_313_"
          class="st1"
          points="-247.4,297 -255.3,283.3 -239.5,283.3 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_312_"
          class="st1"
          points="-239.5,282.3 -255.3,282.3 -247.4,268.6 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_311_"
          class="st1"
          points="-257.1,312.7 -272.9,312.7 -265,299 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_310_"
          class="st1"
          points="-256.2,312.2 -264.1,298.5 -248.3,298.5 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_308_"
          class="st1"
          points="-265,327.4 -272.9,313.7 -257.1,313.7 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_306_"
          class="st1"
          points="-239.5,312.7 -255.3,312.7 -247.4,299 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_305_"
          class="st1"
          points="-247.4,327.4 -255.3,313.7 -239.5,313.7 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_303_"
          class="st0"
          points="-308.8,312.2 -316.7,298.5 -300.9,298.5 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_247_"
          class="st0"
          points="-292.2,312.7 -308,312.7 -300.1,299 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_246_"
          class="st0"
          points="-300.1,327.4 -308,313.7 -292.2,313.7 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_243_"
          class="st0"
          points="-282.5,327.4 -290.4,313.7 -274.6,313.7 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_166_"
          class="st0"
          points="-283.4,327.9 -299.2,327.9 -291.3,314.2 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_161_"
          class="st0"
          points="-265.8,327.9 -281.7,327.9 -273.7,314.2 "
-         style="opacity:0.8;fill:#ffffff;stroke-width:8.35198498"
+         style="opacity:0.8;fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
       <polygon
          id="XMLID_158_"
          class="st1"
          points="-230.8,327.9 -246.6,327.9 -238.7,314.2 "
-         style="fill:#ffffff;stroke-width:8.35198498"
+         style="fill:#ffffff;stroke-width:8.47151852"
          transform="translate(0,-48.599998)" />
     </g>
     <rect

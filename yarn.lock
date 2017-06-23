@@ -1442,9 +1442,9 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
-cx-preact@^17.5.0:
-  version "17.5.0"
-  resolved "https://registry.yarnpkg.com/cx-preact/-/cx-preact-17.5.0.tgz#a1cda38392252a0fea41ca8a612264f148a95939"
+cx-preact@^17.7.0:
+  version "17.7.0"
+  resolved "https://registry.yarnpkg.com/cx-preact/-/cx-preact-17.7.0.tgz#168317ebbbd7bace5d722f83cb5a0aa1a1859092"
 
 cx-react@^17.4.1:
   version "17.4.1"
