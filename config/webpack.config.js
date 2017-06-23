@@ -52,13 +52,15 @@ module.exports = {
         // new CxScssManifestPlugin({
         //     outputPath: path.join(__dirname, '../app/manifest.scss')
         // }),
-        new ScriptExtHtmlWebpackPlugin({
-            async: /\.js$/,
-            preload: {
-                test: /\.js$/,
-                chunks: 'async'
-            }
-        }),
+
+        //this actually lowers lighthouse score
+        // new ScriptExtHtmlWebpackPlugin({
+        //     async: /\.js$/,
+        //     preload: {
+        //         test: /\.js$/,
+        //         chunks: 'async'
+        //     }
+        // }),
     ]
 };
 
