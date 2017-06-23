@@ -54,7 +54,7 @@ module.exports = {
         // }),
         new ScriptExtHtmlWebpackPlugin({
             async: /\.js$/,
-            prefetch: {
+            preload: {
                 test: /\.js$/,
                 chunks: 'async'
             }
