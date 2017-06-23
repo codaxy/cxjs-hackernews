@@ -53,14 +53,13 @@ module.exports = {
         //     outputPath: path.join(__dirname, '../app/manifest.scss')
         // }),
 
-        //this actually lowers lighthouse score
-        // new ScriptExtHtmlWebpackPlugin({
-        //     async: /\.js$/,
-        //     preload: {
-        //         test: /\.js$/,
-        //         chunks: 'async'
-        //     }
-        // }),
+        new ScriptExtHtmlWebpackPlugin({
+            async: /\.js$/,
+            preload: {
+                test: /\.js$/,
+                chunks: 'async'
+            }
+        }),
     ]
 };
 
