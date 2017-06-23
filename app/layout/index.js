@@ -23,6 +23,7 @@ export default (
 							class="cx-logo"
 							href="https://cxjs.io/"
 							target="_blank"
+							aria-label="CxJS"
 							rel="noopener"
 						>
 							<Icon name="cx" />

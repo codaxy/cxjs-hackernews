@@ -28,12 +28,10 @@
 
   a {
     color: black;
-
   }
 
   p {
     margin: 5px 0 0;
-    color: gray;
   }
 
   .comments-no {
@@ -50,20 +48,15 @@
     }
 
     a {
-      color: gray;
+      opacity: 0.9;
 
       &:hover {
-        color: inherit;
+        opacity: 1;
+        //color: inherit;
         text-decoration: none;
       }
     }
   }
-
-  //@for $i from 1 through 30 {
-  //  &:nth-child(#{$i}) {
-  //    animation-delay: $i * 0.05s;
-  //  }
-  //}
 }
 
 @keyframes appear {
