@@ -3,14 +3,14 @@
   "short_name": "CxJS HN",
   "icons": [
     {
-      "src": "/assets/cx-logo-color.svg",
-      "sizes": "192x192",
-      "type": "image/svg+png"
+      "src": "/assets/logo144.png",
+      "sizes": "144x144",
+      "type": "image/png"
     },
     {
-      "src": "/assets/cx-logo-color.svg",
+      "src": "/assets/logo512.png",
       "sizes": "512x512",
-      "type": "image/svg+png"
+      "type": "image/png"
     }
   ],
   "start_url": "/",
