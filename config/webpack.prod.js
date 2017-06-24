@@ -39,6 +39,7 @@ var specific = {
             minify: true
         }),
         new ScriptExtHtmlWebpackPlugin({
+            defaultAttribute: 'async',
             // async: /\.js$/,
             // preload: {
             //     test: /\.js$/,
