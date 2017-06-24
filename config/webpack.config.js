@@ -53,14 +53,14 @@ module.exports = {
         //     outputPath: path.join(__dirname, '../app/manifest.scss')
         // }),
 
-        new ScriptExtHtmlWebpackPlugin({
-            async: /\.js$/,
-            preload: {
-                test: /\.js$/,
-                chunks: 'async'
-            },
-            inline: ['app.js']
-        }),
+        // new ScriptExtHtmlWebpackPlugin({
+        //     async: /\.js$/,
+        //     preload: {
+        //         test: /\.js$/,
+        //         chunks: 'async'
+        //     },
+        //     //inline: ['app.js']
+        // }),
     ]
 };
 
