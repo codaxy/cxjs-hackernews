@@ -3,6 +3,7 @@ var webpack = require('webpack'),
     CopyWebpackPlugin = require('copy-webpack-plugin'),
     SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin'),
     StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin'),
+    ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
     BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin,
     merge = require('webpack-merge'),
     common = require('./webpack.config'),
@@ -36,6 +37,14 @@ var specific = {
         sass,
         new StyleExtHtmlWebpackPlugin({
             minify: true
+        }),
+        new ScriptExtHtmlWebpackPlugin({
+            async: /\.js$/,
+            preload: {
+                test: /\.js$/,
+                chunks: 'async'
+            },
+            inline: ['app.js']
         }),
         new CopyWebpackPlugin([{
             from: path.join(__dirname, '../assets'),
