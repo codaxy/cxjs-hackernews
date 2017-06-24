@@ -40,11 +40,11 @@ var specific = {
         }),
         new ScriptExtHtmlWebpackPlugin({
             defaultAttribute: 'async',
-            // async: /\.js$/,
-            // preload: {
-            //     test: /\.js$/,
-            //     chunks: 'async'
-            // },
+            async: /\.js$/,
+            preload: {
+                test: /\.js$/,
+                chunks: 'async'
+            },
             inline: ['app.js']
         }),
         new CopyWebpackPlugin([{

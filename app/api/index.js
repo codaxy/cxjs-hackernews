@@ -34,9 +34,9 @@ export function watchStories(channel = "top", callback) {
 	let subscribedCallback = snapshot => callback(snapshot.val());
 	let ref = api.child(channel + "stories");
 
-	ref.limitToFirst(30).once('value', subscribedCallback);
-	//ref.on("value", subscribedCallback);
+	//ref.limitToFirst(30).once('value', subscribedCallback);
+	ref.on("value", subscribedCallback);
 	return () => {
-		//ref.off("value", subscribedCallback);
+		ref.off("value", subscribedCallback);
 	};
 }
