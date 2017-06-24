@@ -1,5 +1,5 @@
 import { Controller } from "cx/ui";
-import { watchStories, fetchItem } from "../../api";
+import { watchStories, fetchStories, fetchItem } from "../../api";
 
 //cached across tabs
 let items = {};
@@ -19,10 +19,16 @@ export default class extends Controller {
 				let unloaded = 0;
 				for (let i = 0; i < count; i++) {
 					let id = stories[i];
-					let item = items[id] || { id, title: "Loading" };
+					let item = items[id];
+					if (!item)
+						item = items[id] = {id, title: "Loading"};
 					visible.push(item);
+
 					if (!item.by) {
 						unloaded++;
+						if (item.loading)
+							continue;
+						item.loading = true;
 						fetchItem(item.id).then(fullItem => {
 							this.store.update("itemCache", itemCache => itemCache + 1);
 							items[id] = fullItem;
@@ -56,9 +62,9 @@ export default class extends Controller {
 		if (this.store.get("stories.length") == 0)
 			this.store.set("status", "loading");
 
-		watchStories(channel, data => {
+		this.unwatchStories = watchStories(channel, data => {
 			this.store.set("stories", data);
-		}).then(cb => (this.unwatchStories = cb));
+		});
 	}
 
 	loadMore(depth) {

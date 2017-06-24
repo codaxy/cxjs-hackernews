@@ -1,5 +1,5 @@
 import { Store } from "cx/data";
-import { Url, History, Widget, startAppLoop } from "cx/ui";
+import { Url, History, Widget, startAppLoop, ContentResolver } from "cx/ui";
 import { Timing, Debug } from "cx/util";
 //css
 import "./index.scss";
@@ -34,9 +34,19 @@ Timing.enable("app-loop");
 Debug.enable("app-data");
 
 //app loop
-import Routes from "./routes";
+//import Routes from "./routes";
+import AppLayout from "./layout";
 
-let stop = startAppLoop(document.getElementById("app"), store, Routes);
+
+let app = <cx>
+	<ContentResolver
+		outerLayout={AppLayout}
+		params={1}
+		onResolve={()=>System.import("./routes").then(m=>m.default)}
+	/>
+</cx>
+
+let stop = startAppLoop(document.getElementById("app"), store, app);
 
 // service worker
 if (location.protocol == "https:" && navigator.serviceWorker) {

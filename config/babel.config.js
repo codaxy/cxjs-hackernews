@@ -1,6 +1,6 @@
 module.exports = {
    cacheDirectory: true,
-   cacheIdentifier: "v1",
+   cacheIdentifier: "v2",
    presets: [
       ["cx-env", {
          targets: {
