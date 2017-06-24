@@ -58,7 +58,8 @@ module.exports = {
             preload: {
                 test: /\.js$/,
                 chunks: 'async'
-            }
+            },
+            inline: ['app.js']
         }),
     ]
 };
