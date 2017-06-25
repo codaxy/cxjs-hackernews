@@ -46,7 +46,7 @@ export default (
 							class="article"
 							style={{
 								animationDelay: {
-									tpl: "{[({$index} < 30 && {$index} || 0) * 50]}ms"
+									tpl: "{[({$index} < 30 && {$index} || 0) * 20]}ms"
 								}
 							}}
 						>

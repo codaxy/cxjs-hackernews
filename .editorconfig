@@ -8,3 +8,7 @@ insert_final_newline = true
 [app/**.js]
 indent_style = tab
 indent_size = 3
+
+[app/**.scss]
+indent_style = tab
+indent_size = 3

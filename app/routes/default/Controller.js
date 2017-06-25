@@ -16,7 +16,7 @@ export default class extends Controller {
 			(stories, itemCache, itemCount) => {
 				let visible = [];
 				let count = Math.min(stories.length, itemCount);
-				let unloaded = 0;
+				let loading = 0;
 				for (let i = 0; i < count; i++) {
 					let id = stories[i];
 					let item = items[id];
@@ -25,7 +25,7 @@ export default class extends Controller {
 					visible.push(item);
 
 					if (!item.by) {
-						unloaded++;
+						loading++;
 						if (item.loading)
 							continue;
 						item.loading = true;
@@ -37,7 +37,7 @@ export default class extends Controller {
 					}
 				}
 				this.store.set("visibleStories", visible);
-				if (unloaded == 0 && count > 0) this.store.set("status", "ok");
+				if (loading == 0 && count > 0) this.store.set("status", "ok");
 			}
 		);
 

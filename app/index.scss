@@ -2,6 +2,13 @@ $cx-include-global-rules: true;
 
 @import "~cx/src/variables";
 
+$cx-excluded: map-merge($cx-excluded, (
+	'cx/widgets/Dropdown': true,
+	'cx/widgets/Overlay': true,
+	'cx/widgets/Tooltip': true,
+	'cx/widgets/Button': true,
+));
+
 @import "manifest";
 
 @import "~cx/src/index";
