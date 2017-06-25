@@ -10,9 +10,8 @@
   box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.2s;
   position: relative;
-  //opacity: 0;
-  animation: appear 0.1s;
-  animation-fill-mode: both;
+  //animation: appear 0.1s;
+  //animation-fill-mode: both;
 
   &:hover {
     box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
