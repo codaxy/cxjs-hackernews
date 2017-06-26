@@ -36,6 +36,7 @@ Node.js 6+ is required.
 * firebase - HN API access and real-time updates
 * CxJS:
     * app layout
+    * state management
     * controllers
     * pushState navigation
     * custom components (infinite scrolling)
