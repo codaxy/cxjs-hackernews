@@ -38,15 +38,15 @@ var specific = {
         new StyleExtHtmlWebpackPlugin({
             minify: true
         }),
-        // new ScriptExtHtmlWebpackPlugin({
-        //     defaultAttribute: 'async',
-        //     async: /\.js$/,
-        //     preload: {
-        //         test: /\.js$/,
-        //         chunks: 'async'
-        //     },
-        //     inline: ['app.js']
-        // }),
+        new ScriptExtHtmlWebpackPlugin({
+            // defaultAttribute: 'async',
+            // async: /\.js$/,
+            // preload: {
+            //     test: /\.js$/,
+            //     chunks: 'async'
+            // },
+            inline: ['app.js']
+        }),
         new CopyWebpackPlugin([{
             from: path.join(__dirname, '../assets'),
             to: path.join(__dirname, '../dist/assets'),
