@@ -1,1 +1,1 @@
-export * from './firebase-rest';
+export * from './firebase';
