@@ -17,6 +17,7 @@ export default class extends Controller {
 				let visible = [];
 				let count = Math.min(stories.length, itemCount);
 				let loading = 0;
+				let complete = 0;
 				for (let i = 0; i < count; i++) {
 					let id = stories[i];
 					let item = items[id];
@@ -24,20 +25,27 @@ export default class extends Controller {
 						item = items[id] = {id, title: "Loading"};
 					visible.push(item);
 
-					if (!item.by) {
+					if (item.by)
+						complete++;
+					else {
 						loading++;
 						if (item.loading)
 							continue;
 						item.loading = true;
 						fetchItem(item.id).then(fullItem => {
-							this.store.update("itemCache", itemCache => itemCache + 1);
 							items[id] = fullItem;
-							this.store.set("status", "ok");
+							complete++;
+
+							//issue a new render cycle after 15 new items are collected
+							if (complete % 15 == 0 || complete == itemCount) {
+								this.store.set("status", "ok");
+								this.store.update("itemCache", itemCache => itemCache + 1);
+							}
 						});
 					}
 				}
 				this.store.set("visibleStories", visible);
-				if (loading == 0 && count > 0) this.store.set("status", "ok");
+				if (count > 0 && loading == 0 || complete >= 15) this.store.set("status", "ok");
 			}
 		);
 
@@ -70,11 +78,13 @@ export default class extends Controller {
 	loadMore(depth) {
 		let status = this.store.get("status");
 		let stories = this.store.get("stories");
-		this.store.update("itemCount", itemCount =>
-			Math.min(
-				stories.length,
-				itemCount + Math.max(0, 15 - Math.ceil(depth / 80))
-			)
-		);
+		if (stories.length > 0) {
+			this.store.update("itemCount", itemCount =>
+				Math.min(
+					stories.length,
+					itemCount + Math.max(0, 15 - Math.ceil(depth / 80))
+				)
+			);
+		}
 	}
 }

@@ -1,7 +1,7 @@
 let baseUrl ='https://hacker-news.firebaseio.com/v0';
 
 const fetchJSON = path => {
-	return fetch(`https://hacker-news.firebaseio.com/v0/${path}.json`)
+	return fetch(`${baseUrl}/${path}.json`)
 		.then(r => {
 			if (!r.ok)
 				throw new Error(`Invalid response received. Status ${r.status} - ${r.statusText}`);
