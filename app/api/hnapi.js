@@ -1,4 +1,4 @@
-const baseURL = 'http://api.hackerwebapp.com';
+const baseURL = 'https://api.hackerwebapp.com';
 
 const fetchJSON = path => {
 	return fetch(`${baseURL}/${path}`)
