@@ -1,63 +1,18 @@
 import { Controller } from "cx/ui";
-import { watchStories, fetchStories, fetchItem } from "../../api";
-
-//cached across tabs
-let items = {};
+import { fetchStories } from "../../api";
 
 export default class extends Controller {
 	onInit() {
-		this.store.init("stories", []);
-		this.store.init("itemCache", 0); //for perf reasons store only the version of itemCache here
-		this.store.init("itemCount", 30);
-
-		this.addTrigger(
-			"visibleStories",
-			["stories", "itemCache", "itemCount"],
-			(stories, itemCache, itemCount) => {
-				let visible = [];
-				let count = Math.min(stories.length, itemCount);
-				let loading = 0;
-				let complete = 0;
-				for (let i = 0; i < count; i++) {
-					let id = stories[i];
-					let item = items[id];
-					if (!item)
-						item = items[id] = {id, title: "Loading"};
-					visible.push(item);
-
-					if (item.by)
-						complete++;
-					else {
-						loading++;
-						if (item.loading)
-							continue;
-						item.loading = true;
-						fetchItem(item.id).then(fullItem => {
-							items[id] = fullItem;
-							complete++;
-
-							//issue a new render cycle after 15 new items are collected
-							if (complete % 15 == 0 || complete == itemCount) {
-								this.store.set("status", "ok");
-								this.store.update("itemCache", itemCache => itemCache + 1);
-							}
-						});
-					}
-				}
-				this.store.set("visibleStories", visible);
-				if (count > 0 && loading == 0 || complete >= 15) this.store.set("status", "ok");
-			}
-		);
-
-		this.loadChannel();
-		this.scrollToTop();
-	}
-
-	onDestroy() {
-		if (this.unwatchStories) {
-			this.unwatchStories();
-			this.unwatchStories = null;
+		let now = Date.now();
+		//bust cache every 10 minutes
+		if (!this.store.get('cached') || now - this.store.get('cached') > 10 * 60 * 1000) {
+			this.store.set("stories", []);
+			this.store.set("page", 0);
+			this.store.set("nextPage", 1);
+			this.store.set('cached', now);
 		}
+		this.scrollToTop();
+		this.addTrigger('load', ['nextPage'], ::this.loadChannel, true);
 	}
 
 	scrollToTop() {
@@ -66,25 +21,26 @@ export default class extends Controller {
 	}
 
 	loadChannel() {
-		let channel = this.store.get("$root.url").substring(2) || "top";
+		let channel = this.store.get("$root.url").substring(2) || "news";
+		let page = this.store.get('nextPage');
+		if (page == this.store.get('page'))
+			return;
+
 		if (this.store.get("stories.length") == 0)
 			this.store.set("status", "loading");
 
-		this.unwatchStories = watchStories(channel, data => {
-			this.store.set("stories", data);
-		});
+		fetchStories(channel, page)
+			.then(moreStories => {
+				this.store.update('stories', stories => [...stories, ...moreStories]);
+				this.store.set("status", "ok");
+				this.store.set('page', page);
+			});
 	}
 
 	loadMore(depth) {
 		let status = this.store.get("status");
 		let stories = this.store.get("stories");
-		if (stories.length > 0) {
-			this.store.update("itemCount", itemCount =>
-				Math.min(
-					stories.length,
-					itemCount + Math.max(0, 15 - Math.ceil(depth / 80))
-				)
-			);
-		}
+		if (stories.length > 0 && depth < 1000)
+			this.store.set('nextPage', this.store.get('page') + 1);
 	}
 }

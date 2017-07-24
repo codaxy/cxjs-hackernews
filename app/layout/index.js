@@ -15,10 +15,10 @@ export default (
 					<div class="content">
 						<h1><Link href="~/">HN</Link></h1>
 						<Link href="~/" url:bind="url">Top</Link>
-						<Link href="~/new" url:bind="url">New</Link>
+						<Link href="~/newest" url:bind="url">New</Link>
 						<Link href="~/show" url:bind="url">Show</Link>
 						<Link href="~/ask" url:bind="url">Ask</Link>
-						<Link href="~/job" url:bind="url">Jobs</Link>
+						<Link href="~/jobs" url:bind="url">Jobs</Link>
 						<a
 							class="cx-logo"
 							href="https://cxjs.io/"

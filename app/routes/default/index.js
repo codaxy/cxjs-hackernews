@@ -41,7 +41,7 @@ export default (
 						articles: true
 					}}
 				>
-					<Repeater records:bind="visibleStories" cached idField="id">
+					<Repeater records:bind="stories" cached idField="id">
 						<li
 							class="article"
 							style={{
@@ -59,17 +59,17 @@ export default (
 								/>
 							</h3>
 							<p ws>
-								<span text:bind="$record.score" /> points by{" "}
-								<i text:bind="$record.by" />
+								<span text:bind="$record.points" /> points by{" "}
+								<Link href:tpl="~/user/{$record.user}" text:bind="$record.user" class="user" />
 								<span text:tpl="{$record.time:age}" />
 							</p>
 							<aside
 								class="comments-no"
-								visible:expr="{$record.descendants}!=null"
+								visible:expr="{$record.comments_count}!=null"
 							>
 								<Link href:tpl="~/item/{$record.id}">
-									<span text:bind="$record.descendants" /> <br />{" "}
-									<Text expr="{$record.descendants}==1 ? 'comment' : 'comments'" />
+									<span text:bind="$record.comments_count" /> <br />{" "}
+									<Text expr="{$record.comments_count}==1 ? 'comment' : 'comments'" />
 								</Link>
 							</aside>
 						</li>

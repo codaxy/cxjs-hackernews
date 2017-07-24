@@ -23,37 +23,35 @@ export default (
 						articles: true
 					}}
 				>
-					<Repeater records:bind="visibleStories" cached idField="id">
 						<li
 							class="article"
 							style={{
-								animationDelay: { tpl: "{[{$index} % 30 * 50]}ms" }
+								animation: 'none'
 							}}
 						>
 							<h3>
 								<a
-									text:bind="$record.title"
-									href:bind="$record.url"
+									text:bind="item.title"
+									href:bind="item.url"
 									target="_blank"
 									rel="noopener"
 								/>
 							</h3>
 							<p ws>
-								<span text:bind="$record.score" /> points by{" "}
-								<i text:bind="$record.by" />
-								<span text:tpl="{$record.time:age}" />
+								<span text:bind="item.points" /> points by
+								<Link href:tpl="~/user/{item.user}" text:bind="item.user" class="user" />
+								<span text:tpl="{item.time:age}" />
 							</p>
 							<aside
 								class="comments-no"
-								visible:expr="{$record.descendants}!=null"
+								visible:expr="{item.comments_count}!=0"
 							>
-								<Link href:tpl="~/item/{$record.id}">
-									<span text:bind="$record.descendants" /> <br />{" "}
-									<Text expr="{$record.descendants}==1 ? 'comment' : 'comments'" />
+								<Link href:tpl="~/item/{item.id}">
+									<span text:bind="item.comments_count" /> <br />{" "}
+									<Text expr="{item.comments_count}==1 ? 'comment' : 'comments'" />
 								</Link>
 							</aside>
 						</li>
-					</Repeater>
 				</ul>
 			</div>
 			<ul
@@ -62,31 +60,30 @@ export default (
 				}}
 			>
 				<Repeater
-					records:bind="comments"
+					records:bind="item.comments"
 					cached
 					dataAdapter={{
 						type: TreeAdapter,
-						load: (context, { controller }, node) =>
-							controller.loadSubcomments(node)
+						childrenField: 'comments'
 					}}
 				>
 					<li
 						class="comment"
-						visible:expr="!!{$record.text}"
+						visible:expr="!!{$record.content}"
 						style={{
 							paddingLeft: { expr: "({$record.$level} + 1) * 30" }
 						}}
 					>
-						<p>
-							<i text:bind="$record.by" />{" "}
+						<p ws>
+							<Link href:tpl="~/user/{$record.user}" text:bind="$record.user" class="user" />
 							<span text:tpl="{$record.time:age}" />
 						</p>
-						<p html:bind="$record.text" />
-						<p visible:expr="{$record.kids.length} > 0">
+						<p html:bind="$record.content" />
+						<p visible:expr="{$record.comments.length} > 0">
 							<a
 								visible:expr="!{$record.$expanded}"
 								href="#"
-								text:expr="{$record.kids.length} + ' ' + ({$record.kids.length} == 1 ? 'reply' : 'replies')"
+								text:expr="{$record.comments.length} + ' ' + ({$record.comments.length} == 1 ? 'reply' : 'replies')"
 								onClick={(e, { store }) => {
 									store.toggle("$record.$expanded");
 									e.preventDefault();

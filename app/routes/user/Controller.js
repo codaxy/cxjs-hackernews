@@ -1,5 +1,5 @@
 import { Controller } from "cx/ui";
-import { fetchItem } from "../../api";
+import { fetchUser } from "../../api";
 
 export default class extends Controller {
 	onInit() {
@@ -12,11 +12,11 @@ export default class extends Controller {
 	}
 
 	load() {
-		let id = this.store.get("$root.url").substring("~/item/".length);
+		let id = this.store.get("$root.url").substring("~/user/".length);
 
-		fetchItem(id).then(item => {
+		fetchUser(id).then(user => {
 			this.scrollToTop();
-			this.store.set("item", item);
+			this.store.set("user", user);
 		});
 	}
 }
