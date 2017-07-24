@@ -35,7 +35,11 @@ export default (
 			<div class="loading" visible:expr="{status}=='loading'">
 				<Icon name="loading" /> Loading...
 			</div>
-			<div visible:expr="{status}!='loading'">
+			<div visible:expr="{status}=='error'" ws class="error">
+				Error occurred while loading article. Please verify your Internet connection and
+				<a href="#" onClick="reload">retry</a>.
+			</div>
+			<div visible:expr="{status}=='ok'">
 				<ul
 					class={{
 						articles: true

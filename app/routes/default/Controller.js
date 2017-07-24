@@ -12,7 +12,7 @@ export default class extends Controller {
 			this.store.set('cached', now);
 		}
 		this.scrollToTop();
-		this.addTrigger('load', ['nextPage'], ::this.loadChannel, true);
+		this.addTrigger('load', ['nextPage'], ::this.load, true);
 	}
 
 	scrollToTop() {
@@ -20,13 +20,20 @@ export default class extends Controller {
 		scrollEl.scrollTop = 0;
 	}
 
-	loadChannel() {
+	reload(e) {
+		if (e)
+			e.preventDefault();
+
+		this.load();
+	}
+
+	load() {
 		let channel = this.store.get("$root.url").substring(2) || "news";
 		let page = this.store.get('nextPage');
 		if (page == this.store.get('page'))
 			return;
 
-		if (this.store.get("stories.length") == 0)
+		if (this.store.get("status") != 'ok')
 			this.store.set("status", "loading");
 
 		fetchStories(channel, page)
@@ -34,6 +41,14 @@ export default class extends Controller {
 				this.store.update('stories', stories => [...stories, ...moreStories]);
 				this.store.set("status", "ok");
 				this.store.set('page', page);
+			})
+			.catch(e => {
+				console.error(e);
+				if (this.store.get("status") != 'ok')
+					this.store.set("status", "error");
+				else {
+					//display an error overlay?
+				}
 			});
 	}
 

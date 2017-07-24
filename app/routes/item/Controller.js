@@ -4,6 +4,7 @@ import { fetchItem } from "../../api";
 export default class extends Controller {
 	onInit() {
 		this.load();
+		this.scrollToTop();
 	}
 
 	scrollToTop() {
@@ -11,12 +12,22 @@ export default class extends Controller {
 		scrollEl.scrollTop = 0;
 	}
 
-	load() {
-		let id = this.store.get("$root.url").substring("~/item/".length);
+	load(e) {
+		if (e)
+			e.preventDefault();
 
-		fetchItem(id).then(item => {
-			this.scrollToTop();
-			this.store.set("item", item);
-		});
+		let id = this.store.get("$root.url").substring("~/item/".length);
+		if (this.store.get('item.status') != 'ok')
+			this.store.set('status', 'loading');
+
+		fetchItem(id)
+			.then(item => {
+				this.store.set("item", item);
+				this.store.set('status', 'ok');
+			})
+			.catch(e => {
+				console.error(e);
+				this.store.set('status', 'error');
+			})
 	}
 }

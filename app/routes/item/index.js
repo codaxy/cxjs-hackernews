@@ -17,7 +17,11 @@ export default (
 			<div class="loading" visible:expr="{status}=='loading'">
 				<Icon name="loading" /> Loading...
 			</div>
-			<div visible:expr="{status}!='loading'">
+			<div visible:expr="{status}=='error'" ws class="error">
+				Error occurred while loading article. Please verify your Internet connection and
+				<a href="#" onClick="load">retry</a>.
+			</div>
+			<div visible:expr="{status}=='ok'">
 				<ul
 					class={{
 						articles: true
@@ -42,6 +46,7 @@ export default (
 								<Link href:tpl="~/user/{item.user}" text:bind="item.user" class="user" />
 								<span text:tpl="{item.time:age}" />
 							</p>
+							<p html:bind="item.content" memoize={false} visible:expr="!!{item.content}" />
 							<aside
 								class="comments-no"
 								visible:expr="{item.comments_count}!=0"
@@ -61,7 +66,7 @@ export default (
 			>
 				<Repeater
 					records:bind="item.comments"
-					cached
+					cached={false}
 					dataAdapter={{
 						type: TreeAdapter,
 						childrenField: 'comments'
@@ -78,7 +83,7 @@ export default (
 							<Link href:tpl="~/user/{$record.user}" text:bind="$record.user" class="user" />
 							<span text:tpl="{$record.time:age}" />
 						</p>
-						<p html:bind="$record.content" />
+						<p html:bind="$record.content" memoize={false} />
 						<p visible:expr="{$record.comments.length} > 0">
 							<a
 								visible:expr="!{$record.$expanded}"
