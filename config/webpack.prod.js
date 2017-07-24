@@ -30,7 +30,11 @@ var specific = {
             'process.env.NODE_ENV': JSON.stringify('production')
         }),
         new SWPrecacheWebpackPlugin({
-            staticFileGlobsIgnorePatterns: [/_redirects/]
+            staticFileGlobsIgnorePatterns: [/_redirects/],
+            runtimeCaching: [{
+                urlPattern: /^https:\/\/api\.hackerwebapp\.com/,
+                handler: 'networkFirst'
+            }]
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
