@@ -55,23 +55,30 @@ export default (
 							}}
 						>
 							<h3>
+								<Link
+									href:tpl="~/item/{$record.id}"
+									text:bind="$record.title"
+									visible:expr="{$record.type}=='ask'"
+									onClick="saveScrollState"
+								/>
 								<a
 									text:bind="$record.title"
 									href:bind="$record.url"
 									target="_blank"
 									rel="noopener"
+									visible:expr="{$record.type}!='ask'"
 								/>
 							</h3>
 							<p ws>
 								<span text:bind="$record.points" /> points by{" "}
-								<Link href:tpl="~/user/{$record.user}" text:bind="$record.user" class="user" />
+								<Link href:tpl="~/user/{$record.user}" text:bind="$record.user" class="user" onClick="saveScrollState" />
 								<span text:tpl="{$record.time:age}" />
 							</p>
 							<aside
 								class="comments-no"
 								visible:expr="{$record.comments_count}!=null"
 							>
-								<Link href:tpl="~/item/{$record.id}">
+								<Link href:tpl="~/item/{$record.id}" onClick="saveScrollState">
 									<span text:bind="$record.comments_count" /> <br />{" "}
 									<Text expr="{$record.comments_count}==1 ? 'comment' : 'comments'" />
 								</Link>

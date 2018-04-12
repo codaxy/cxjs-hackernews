@@ -1,6 +1,8 @@
 import { Controller } from "cx/ui";
 import { fetchStories } from "../../api";
 
+let scrollState = null;
+
 export default class extends Controller {
 	onInit() {
 		let now = Date.now();
@@ -17,7 +19,19 @@ export default class extends Controller {
 
 	scrollToTop() {
 		let scrollEl = document.scrollingElement || document.documentElement;
-		scrollEl.scrollTop = 0;
+
+		if (scrollState && scrollState.url == this.store.get('$root.url'))
+			scrollEl.scrollTop = scrollState.top;
+		else
+			scrollEl.scrollTop = 0;
+	}
+
+	saveScrollState() {
+		let scrollEl = document.scrollingElement || document.documentElement;
+		scrollState = {
+			top: scrollEl.scrollTop,
+			url: this.store.get('$root.url')
+		}
 	}
 
 	reload(e) {
