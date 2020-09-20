@@ -1,107 +1,108 @@
 .articles {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .article {
-  background: white;
-  padding: 20px 100px 20px 20px;
-  box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s;
-  position: relative;
-  @media screen and (min-width: 700px) {
-    animation: appear 0.1s;
-    animation-fill-mode: both;
-  }
+	background: white;
+	padding: 20px 100px 20px 20px;
+	box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
+	transition: all 0.2s;
+	position: relative;
+	@media screen and (min-width: 700px) {
+		animation: appear 0.1s;
+		animation-fill-mode: both;
+	}
 
-  &:hover {
-    box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
-    //margin-top: -3px;
-    //padding-bottom: 23px;
-  }
+	&:hover {
+		box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+		//margin-top: -3px;
+		//padding-bottom: 23px;
+	}
 
-  h3 {
-    font-weight: 500;
-    font-size: 16px;
-    margin: 0;
-  }
+	h3 {
+		font-weight: 500;
+		font-size: 16px;
+		margin: 0;
+	}
 
-  a {
-    color: black;
-  }
+	a {
+		color: black;
+	}
 
-  p {
-    margin: 5px 0 0;
-  }
+	p {
+		margin: 5px 0 0;
+	}
 
-  .comments-no {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    margin-top: -24px;
-    width: 100px;
-    text-align: center;
+	.comments-no {
+		position: absolute;
+		right: 0;
+		top: 50%;
+		margin-top: -24px;
+		width: 100px;
+		text-align: center;
 
-    span {
-      font-size: 20px;
-      font-weight: 500;
-    }
+		span {
+			font-size: 20px;
+			font-weight: 500;
+		}
 
-    a {
-      opacity: 0.9;
+		a {
+			opacity: 0.9;
 
-      &:hover {
-        opacity: 1;
-        //color: inherit;
-        text-decoration: none;
-      }
-    }
-  }
+			&:hover {
+				opacity: 1;
+				//color: inherit;
+				text-decoration: none;
+			}
+		}
+	}
 }
 
 @keyframes appear {
-  0% {
-    opacity: 0;
-    transform: scale(0.9) translateY(-200px);
-  }
+	0% {
+		opacity: 0;
+		transform: scale(0.9) translateY(-200px);
+	}
 
-  100% {
-    opacity: 1;
-    transform: none;
-  }
+	100% {
+		opacity: 1;
+		transform: none;
+	}
 }
 
 @keyframes appear-top {
-  0% {
-    opacity: 0;
-    transform: translateY(-100px);
-  }
+	0% {
+		opacity: 0;
+		transform: translateY(-100px);
+	}
 
-  100% {
-    opacity: 1;
-    transform: none;
-  }
+	100% {
+		opacity: 1;
+		transform: none;
+	}
 }
 
 .loading {
-  padding: 20px;
+	padding: 20px;
 }
 
 .comments {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  overflow-anchor: none;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	overflow-anchor: none;
 }
 
 .comment {
-  background: white;
-  padding: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+	background: white;
+	padding: 20px;
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+	overflow-x: auto;
 
-  transition: all 0.4s;
-  position: relative;
+	transition: all 0.4s;
+	position: relative;
 }
 
 .user {
