@@ -58,7 +58,7 @@ export default (
 								<Link
 									href:tpl="~/item/{$record.id}"
 									text:bind="$record.title"
-									visible:expr="{$record.type}=='ask'"
+									visible:expr="{$record.url}.startsWith('item?id=')"
 									onClick="saveScrollState"
 								/>
 								<a
@@ -66,7 +66,7 @@ export default (
 									href:bind="$record.url"
 									target="_blank"
 									rel="noopener"
-									visible:expr="{$record.type}!='ask'"
+									visible:expr="!{$record.url}.startsWith('item?id=')"
 								/>
 							</h3>
 							<p ws>
